@@ -8,7 +8,7 @@ load_dotenv()
 
 class BauCuaBot(commands.Bot):
     def __init__(self):
-        self.description = "Bau Cua Bot"
+        self.description = "Bầu Cua Bot mô phỏng tựa game Bầu Cua Cá Cọp, hay còn có tên là Hoo Hey How."
         super().__init__(
             command_prefix = commands.when_mentioned_or('!'),
             owner_id = 476438504868544525,
@@ -66,6 +66,17 @@ async def updateactivity(ctx, activity_name):
 @commands.is_owner()
 async def ping(ctx):
     await ctx.send(f"{round(bot.latency * 1000)}ms")
+
+@bot.command(hidden = True)
+@commands.is_owner()
+async def checksv(ctx):
+    result = ''
+    activesv = bot.guilds
+    count= 0
+    for guild in activesv:
+        count += 1
+        result += 'NO.{0} | ID: {1} | Name: {2} | Member: {3}\n'.format(count, guild.id, guild.name, guild.member_count)
+    await ctx.send(result)
 
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
