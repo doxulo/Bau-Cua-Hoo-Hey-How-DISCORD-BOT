@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from utils import misc
+from pretty_help import PrettyHelp, DefaultMenu
 
 load_dotenv()
 
@@ -15,6 +16,7 @@ class BauCuaBot(commands.Bot):
             description = self.description,
             case_insensitive = True,
             activity = discord.Activity(name="!help", type=discord.ActivityType.listening),
+            help_command = PrettyHelp(color = discord.Color(0xdc1d24))
         )
 
     async def on_ready(self):
