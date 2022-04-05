@@ -18,6 +18,7 @@ class BauCuaBot(commands.Bot):
         )
 
     async def on_ready(self):
+        self.starttime = misc.get_raw_current_time()
         print(f'connected to discord as {self.user} at {misc.get_formated_ICT_time()}')
 
 bot = BauCuaBot()
@@ -77,6 +78,11 @@ async def checksv(ctx):
         count += 1
         result += 'NO.{0} | ID: {1} | Name: {2} | Member: {3}\n'.format(count, guild.id, guild.name, guild.member_count)
     await ctx.send(result)
+
+@bot.command(hidden = True)
+@commands.is_owner()
+async def uptime(ctx):
+    await ctx.send(f"{misc.get_formated_uptime(bot.starttime)}")
 
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
