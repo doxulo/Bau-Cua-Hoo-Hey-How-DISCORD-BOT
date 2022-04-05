@@ -5,7 +5,7 @@ import random as rand
 from utils import misc
 
 class BauCua(commands.Cog):
-    """ Commands related to bot utilities."""
+    """ Lệnh game Bầu Cua"""
     def __init__(self, bot):
         self.bot = bot
         self.dice_emojis = {

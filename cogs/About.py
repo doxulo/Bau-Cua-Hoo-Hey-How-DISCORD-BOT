@@ -4,7 +4,7 @@ from discord.ext import commands
 from utils import misc
 
 class About(commands.Cog):
-    """ Commands related to bot information."""
+    """ Lệnh liên quan đến thông tin Bot"""
     def __init__(self, bot):
         self.bot = bot
     
