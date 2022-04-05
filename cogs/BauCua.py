@@ -71,7 +71,7 @@ class BauCua(commands.Cog):
             return user == ctx.author and str(reaction.emoji) == self.extra_emojis['bell']
 
         try:
-            await self.bot.wait_for('reaction_add', timeout=30.0, check = check1)
+            await self.bot.wait_for('reaction_add', timeout=120.0, check = check1)
         except asyncio.TimeoutError:
             pass
 
