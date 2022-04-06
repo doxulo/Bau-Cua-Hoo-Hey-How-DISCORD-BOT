@@ -10,13 +10,14 @@ load_dotenv()
 class BauCuaBot(commands.Bot):
     def __init__(self):
         self.description = "Bầu Cua Bot mô phỏng tựa game Bầu Cua Cá Cọp, hay còn có tên là Hoo Hey How."
+        self.menu = DefaultMenu(delete_after_timeout=True)
         super().__init__(
             command_prefix = commands.when_mentioned_or('!'),
             owner_id = 476438504868544525,
             description = self.description,
             case_insensitive = True,
             activity = discord.Activity(name="!help", type=discord.ActivityType.listening),
-            help_command = PrettyHelp(color = discord.Color(0xdc1d24))
+            help_command = PrettyHelp(color = discord.Color(0xdc1d24), ending_note = "Yêu cầu bởi {ctx.author}", index_title = "Chức năng", menu = self.menu, no_category = "Khác")
         )
 
     async def on_ready(self):
